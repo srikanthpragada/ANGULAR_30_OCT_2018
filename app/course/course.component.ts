@@ -20,4 +20,16 @@ export class CourseComponent {
     // Add topic to collection 
     this.topics.push(newtopic)
   }
+
+  deleteTopic(topic : string) : void {
+    var pos =  this.topics.indexOf(topic)
+    if ( pos >= 0)
+    {
+        if (! confirm("Do you want to delete topic -> " + topic + "??") )
+          return;
+        this.topics.splice(pos,1)
+    }
+    else
+        alert("Sorry! Topic not found!")
+  }
 }

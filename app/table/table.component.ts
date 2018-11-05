@@ -1,12 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+class Entry {
+    num : number;
+    count : number;
+    result : number;
+}
 
 @Component({
-    selector: 'app-name',
-    templateUrl: './name.component.html',
-    styleUrls: ['./name.component.scss']
+    selector: 'st-table',
+    templateUrl: './table.component.html'
 })
-export class NameComponent implements OnInit {
-    constructor() { }
+export class TableComponent {
+    numTable : Entry[] = [];
 
-    ngOnInit(): void { }
+    generateTable(num: number, count : number) : void 
+    {
+         this.numTable = [];
+
+         for(var i = 1; i <= count ; i++)
+         {
+            var e = new Entry()
+            e.num = num;
+            e.count = i;
+            e.result = num * i;
+            this.numTable.push(e)
+         }
+
+    }
 }
+
+
+ 

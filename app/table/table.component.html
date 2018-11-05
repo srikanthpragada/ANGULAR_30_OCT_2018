@@ -1,0 +1,15 @@
+<h1>Table Generation</h1>
+Number : <input type="number" #num/>
+Count  : <input type="number" value="20" #count />
+<button (click)="generateTable(num.value, count.value)">Generate</button>
+<p></p>
+<table border="1"  *ngIf="numTable.length > 0" >
+    <tr><th>Number</th><th>Count</th><th>Result</th></tr>
+    <tr *ngFor="let v of numTable">
+         <td>{{v.num}} </td>
+         <td>{{v.count}}</td>
+         <th>{{v.result}}</th>
+    </tr>
+</table>
+
+<input type="text" [disabled]="true"> </input>
