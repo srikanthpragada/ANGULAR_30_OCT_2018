@@ -1,0 +1,47 @@
+<style>
+.big {
+    font-size:30pt;
+}
+
+.red {
+    color : red; 
+    font-weight: bold;
+}
+
+</style>
+
+<input type="text"  [disabled]="! details"/>
+<p></p>
+<input [attr.type]="isNumber ? 'number' : 'text'" />
+
+<p></p>
+<input type="checkbox" #big  (click)="bigClicked(big.checked)" />Big 
+<p></p>
+<input type="checkbox" #red  (click)="1==1" />Red
+<p></p>
+<div [class.big]="isBig" [style.color]="red.checked ? 'red' : 'black'" >This is DIV</div>
+
+<div (mousemove)="showMousePoint($event)">
+Move your mouse here!
+</div>
+
+<div>
+    {{mouseInfo}}
+</div>
+
+<div  [ngClass]="{'big' : big.checked , 'red' : red.checked}">
+    This is another DIV with classes 
+</div>
+<p></p>
+<input type="checkbox" #employee (click)= "1 > 0" /> Is Employee?
+
+<div  *ngIf="employee.checked; then  employeeDetails; else studentDetails">
+</div> 
+
+<ng-template #employeeDetails>
+    <div>Employee Information </div>
+</ng-template>
+
+<ng-template #studentDetails>
+    <div>Student Information </div>
+</ng-template>

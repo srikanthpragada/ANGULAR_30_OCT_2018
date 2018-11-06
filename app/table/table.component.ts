@@ -12,11 +12,9 @@ class Entry {
 })
 export class TableComponent {
     numTable : Entry[] = [];
-
     generateTable(num: number, count : number) : void 
     {
          this.numTable = [];
-
          for(var i = 1; i <= count ; i++)
          {
             var e = new Entry()
@@ -25,7 +23,6 @@ export class TableComponent {
             e.result = num * i;
             this.numTable.push(e)
          }
-
     }
 }
 
