@@ -1,22 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { TableComponent } from './table/table.component';
-import { BindingComponent } from './binding/binidng.component';
-import { PipesDemoComponent } from './pipes/pipesdemo.component';
-import { BracketsPipe } from './pipes/brackets.pipe';
-import { FirstComponent } from './icc/first.component';
-import { SecondComponent } from './icc/second.component';
-import { ProductsListComponent } from './icc/products-list.component';
-import { ProductDetailsComponent } from './icc/product-details.component';
+import { UseStackComponent } from './services/usestack.component';
+import { StackComponent } from './services/stack.component';
+import { StackService } from './services/stack.service';
+import { LoginComponent } from './forms/login.component';
+
 
 @NgModule({
   declarations: [
-     ProductsListComponent, ProductDetailsComponent
+     LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, FormsModule
   ],
-  providers: [],
-  bootstrap: [ProductsListComponent]
+  providers: [StackService],
+  bootstrap: [LoginComponent]
 })
 export class AppModule { }
