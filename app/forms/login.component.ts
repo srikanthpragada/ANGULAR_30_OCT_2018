@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './login.component.html'
 })
 export class LoginComponent {
-    username : string = "Abcd";
+    username : string ;
     password : string;
 
     login() {

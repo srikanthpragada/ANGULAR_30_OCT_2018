@@ -22,7 +22,7 @@ export class RLoginComponent {
         console.log(this.loginForm);
         if (this.loginForm.valid) {
             console.log(this.loginForm.controls["username"].value);
-            console.log(this.loginForm);
+            console.log(this.loginForm.value["username"]);
         }
 
     }

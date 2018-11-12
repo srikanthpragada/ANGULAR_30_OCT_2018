@@ -1,6 +1,8 @@
 <style>
-    input.ng-invalid { color :red}
+    input.ng-valid { color : green}
+    input.ng-invalid { color : red ; background-color:silver}
 </style>
+
 <h1>Login </h1>
 
 <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
@@ -23,6 +25,9 @@
     <p></p>
     Uname Valid : {{uname.valid}}
     <p></p>
+    Uname errors : {{uname.errors | json}}
+    <p></p>
     Password Valid :  {{pwd.valid}}
+
 
 </form>
