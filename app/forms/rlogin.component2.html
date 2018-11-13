@@ -7,21 +7,22 @@
 <form [formGroup]="loginForm"  novalidate>
     Username <br/>
     <input type="text"  formControlName="username"/>
-    <span *ngIf="loginForm.controls.username.dirty && loginForm.controls.username.errors?.required">
+    <span *ngIf="submitted && loginForm.controls.username.errors?.required">
            Username must be entered!
     </span>
     <p></p>
     Password <br/>
     <input type="password" formControlName="password" />
-    <span *ngIf="loginForm.controls.password.dirty && 
+    <span *ngIf="submitted && 
             loginForm.controls.password.errors?.required">Password is required </span>
             
-     <span *ngIf="loginForm.controls.password.dirty && 
+     <span *ngIf="submitted && 
                      loginForm.controls.password.errors?.mustHaveStar">
            Pasword must have star
     </span>
     <p></p>
     <input type="submit" value="Login" (click)="login()"/>
 </form>    
-
+<p></p>
 {{loginForm.controls.password.errors | json}}
+<p></p>

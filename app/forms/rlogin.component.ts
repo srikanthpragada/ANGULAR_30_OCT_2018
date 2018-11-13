@@ -3,14 +3,15 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 
 @Component({
     selector: 'st-login',
-    templateUrl: './rlogin.component.html'
+    templateUrl: './rlogin.component2.html'
 })
 export class RLoginComponent {
     loginForm: FormGroup;
+    submitted : boolean  = false; 
     constructor(private fb: FormBuilder) {
         this.loginForm = this.fb.group(
             {
-                username: ["", Validators.compose
+                username: ["Abcd", Validators.compose
                     ([Validators.required, Validators.minLength(4)])],
                 password: ["", Validators.compose
                     ([Validators.required, this.mustHaveStar])]
@@ -19,6 +20,7 @@ export class RLoginComponent {
     }
 
     login() {
+        this.submitted = true;
         console.log(this.loginForm);
         if (this.loginForm.valid) {
             console.log(this.loginForm.controls["username"].value);
@@ -34,8 +36,8 @@ export class RLoginComponent {
             return null;  // success
 
         if (formControl.value.indexOf('*') < 0)  // star not found
-            return { mustHaveStar: { actualValue: formControl.value } };  // Error as validation failed  
+            return { mustHaveStar: true };  // Error as validation failed  
 
-        return null;  // Success 
+        return null;  // Success, star is found 
     }
 }
