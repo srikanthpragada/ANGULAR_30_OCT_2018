@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { WebBook } from 'app/http/Webbook';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { WebBook } from '../http/Webbook';
+import { HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 import 'rxjs/add/operator/map';
@@ -9,19 +9,18 @@ import 'rxjs/add/operator/finally';
 @Injectable()
 export class BooksService {
     URL : string = "http://test.srikanthpragada.com/api/books";
-    constructor(private http: Http) {
+    
+    constructor(private http: HttpClient) {
     }
 
     getBooks() : Observable<WebBook[]>
     {
-        return this.http.get(this.URL)
-                  .map(resp => <WebBook[]> resp.json());
+        return this.http.get<WebBook[]>(this.URL)
     }
 
     getBook(id : number) : Observable<WebBook>
     {
-        return this.http.get(this.URL + "/" + id)
-                  .map(resp => <WebBook> resp.json()) // convert to JSON
+        return this.http.get<WebBook>(this.URL + "/" + id);
     }
     
 }

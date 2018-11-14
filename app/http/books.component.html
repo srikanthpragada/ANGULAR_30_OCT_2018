@@ -7,7 +7,9 @@
 <body>
     <h1>Books with RxJS </h1>
 
-    <table border="1" style="width:100%">
+    <h3 *ngIf="errorObj">{{errorObj.statusText}}</h3>
+
+    <table border="1" style="width:100%" *ngIf="books">
         <tr>
             <th>Title </th>
             <th>Author </th>

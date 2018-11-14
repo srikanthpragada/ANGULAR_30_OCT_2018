@@ -23,8 +23,8 @@ export class AddBookComponent {
           this.added = false; 
           this.http.post("http://test.srikanthpragada.com/api/books", 
                               this.book)
-            .map( (resp:Response) => {return resp})
-            .finally( () => { this.done = true; } )
+            //.map( (resp:Response) => {return resp})
+            //  .finally( () => { this.done = true; } )
             .subscribe(result => this.added = true,
                        error => this.added = false
             );

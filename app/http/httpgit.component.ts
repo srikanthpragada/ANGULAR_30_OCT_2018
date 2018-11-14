@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { GitUser } from './GitUser';
 import { GitRepo } from './GitRepo';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs';
+import { HttpClient} from '@angular/common/http';
+import  {map, finalize  } from "rxjs/operators"  
 
 
 @Component(
@@ -17,7 +17,7 @@ export class HttpGitComponent {
     public isLoading: boolean = false;
     public message: string = null;
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
     }
 
     getDetails(username: string): void {
@@ -25,20 +25,17 @@ export class HttpGitComponent {
         this.message = null;
         this.isLoading = true; 
 
-        // this.http.get(this.url + username)
-        //     // .map( resp => resp.json())
-        //     .finally( () => this.isLoading = false)
-        //     .subscribe(resp => this.user = <GitUser> resp,
-        //                error => this.message = "Sorry! User Not Found!");
+        this.http.get<GitUser>(this.url + username)
+            .pipe(finalize( () => this.isLoading = false))
+            .subscribe(resp => this.user = resp,
+                       error => this.message = "Sorry! User Not Found!");
     }
 
     getRepos(username: string): void {
-        // this.http.get(this.url + username + "/repos")
-        //    // .map( resp => resp.json())
-        //     .finally( () => this.isLoading = false)
-        //     .subscribe(resp => this.repos = <GitRepo[]> resp,
-        //                error => this.message = "Sorry! User Not Found!");
-
+        this.http.get<GitRepo[]>(this.url + username + "/repos")
+            .pipe(finalize( () => this.isLoading = false))
+            .subscribe(resp => this.repos = resp,
+                       error => this.message = "Sorry! User Not Found!");
     }
 
      

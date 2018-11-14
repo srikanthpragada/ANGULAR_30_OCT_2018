@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from './Book';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient , HttpErrorResponse} from '@angular/common/http';
 
 @Component({
     selector: 'st-books',
@@ -8,20 +8,20 @@ import { HttpClient} from '@angular/common/http';
 })
 export class BooksComponent implements OnInit {
     books: Book[];
+    errorObj : HttpErrorResponse = null;
 
     constructor(private http: HttpClient) {
     }
 
     ngOnInit() {
-       this.getBooksWithObservable();
-    }
-
-    getBooksWithObservable() {
          // make AJAX request 
-         this.http.get("assets/books.json")
-                  .subscribe( resp => this.books= <Book[]> resp);
+         this.http.get<Book[]>("assets/books.json")
+                  .subscribe( resp => this.books = resp, 
+                              error => {
+                                   this.errorObj = error; 
+                                   console.log(error) 
+                                }
+                            );
     }
-
-    
 
 }

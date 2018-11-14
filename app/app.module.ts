@@ -3,17 +3,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BooksComponent } from './http/books.component';
+import { HttpGitComponent } from './http/httpgit.component';
 
 
 
 @NgModule({
   declarations: [
-     BooksComponent
+     HttpGitComponent
   ],
   imports: [
     BrowserModule, HttpClientModule
   ],
   providers: [],
-  bootstrap: [BooksComponent]
+  bootstrap: [HttpGitComponent]
 })
 export class AppModule { }
