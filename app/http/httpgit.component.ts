@@ -31,7 +31,9 @@ export class HttpGitComponent {
                        error => this.message = "Sorry! User Not Found!");
     }
 
+
     getRepos(username: string): void {
+        this.repos = null 
         this.http.get<GitRepo[]>(this.url + username + "/repos")
             .pipe(finalize( () => this.isLoading = false))
             .subscribe(resp => this.repos = resp,
